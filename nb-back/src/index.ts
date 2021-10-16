@@ -1,21 +1,23 @@
 import { Client } from '@notionhq/client';
-import { getDatabase } from './getDatabase';
-import { createPage } from './createPage';
-import { getPage } from './getPage';
+import type { Response, Request } from 'express';
+import { getPageList as _getPageList } from './getPageList';
+import { getPageContent as _getPageContent } from './getPageContent';
 
-const main = async () => {
+export const getPageList = async (req: Request, res: Response) => {
   const notion = new Client({ auth: process.env.NOTION_KEY });
-
   const databaseId = process.env.NOTION_DATABASE_ID as string;
 
-  const response = await getDatabase({ notion, databaseId });
-
-  if (response && response.properties.tags.type === 'multi_select') {
-    const { properties: { tags: { multi_select: { options } } } } = response;
-  }
-
-  const pages = await getPage({ notion, databaseId });
-  console.log(pages);
+  const pageList = await _getPageList({ notion, databaseId });
+  return res.status(200).send(
+    pageList,
+  );
 };
 
-main();
+export const getPageContent = async (req: Request, res: Response) => {
+  const notion = new Client({ auth: process.env.NOTION_KEY });
+  const { pageId } = req.params;
+  const page = await _getPageContent({ notion, pageId });
+  return res.status(200).send(
+    page,
+  );
+};

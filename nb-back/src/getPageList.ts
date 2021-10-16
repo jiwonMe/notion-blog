@@ -1,6 +1,6 @@
 import type { Client } from '@notionhq/client';
 
-export const getPage = async ({ notion, databaseId }: { notion: Client, databaseId: string }) => {
+export const getPageList = async ({ notion, databaseId }: { notion: Client, databaseId: string }) => {
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {

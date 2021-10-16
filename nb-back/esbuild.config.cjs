@@ -1,5 +1,5 @@
-require('esbuild').buildSync({
-  entryPoints: ['./src/index.ts'],
+require('esbuild').build({
+  entryPoints: ['./server/index.ts'],
   bundle: true,
   minify: false,
   sourcemap: true,
@@ -7,4 +7,5 @@ require('esbuild').buildSync({
   target: ['node14'],
   resolveExtensions: ['.ts', '.js'],
   outdir: './dist',
-})
+  watch: true,
+});
