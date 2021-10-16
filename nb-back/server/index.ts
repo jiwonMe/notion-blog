@@ -18,6 +18,6 @@ server.listen(port, () => {
   console.log(`[server] server started listening on http://localhost:${port}`);
 });
 
-server.get('/', wrapAsync(getPageList));
+server.get('/api/v1/getPageList', wrapAsync(getPageList));
 
-server.get('/:pageId', wrapAsync(getPageContent));
+server.get('/api/v1/getPageContent/:pageId', wrapAsync(getPageContent));
