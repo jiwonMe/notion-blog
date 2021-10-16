@@ -1,0 +1,16 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.autoClosingBrackets": "always",
+    "editor.codeActionsOnSave": {
+      // For ESLint
+      "source.fixAll.eslint": true
+    },
+  },
+  "eslint.workingDirectories": [
+    "./nb-api",
+    "./nb-client",
+  ]
+}
