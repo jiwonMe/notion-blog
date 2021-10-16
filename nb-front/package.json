@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "lit": "^2.0.2",
+    "regenerator-runtime": "^0.13.9",
     "typescript": "^4.4.4"
   },
   "devDependencies": {

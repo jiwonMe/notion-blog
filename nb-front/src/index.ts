@@ -1,5 +1,10 @@
-import { addItem } from 'notion-blog/api';
+import 'regenerator-runtime/runtime';
 
-const elem = document.getElementById('root') as HTMLElement;
-elem.innerHTML = 'complete';
-await addItem('hello');
+import getPageList from './api/getPageList';
+
+export const main = async () => {
+  const pageList = await getPageList();
+  console.log(pageList);
+};
+
+main();
