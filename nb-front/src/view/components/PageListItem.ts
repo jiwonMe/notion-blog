@@ -1,14 +1,13 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
-
-import type { Page } from 'nb-client/interface/Page';
+import { PageModel } from 'nb-client/model/PageModel';
 
 @customElement('nb-page-list-item')
 export class ListItem extends LitElement {
   /**
    * @properties
    */
-  page: Page;
+  page: PageModel['meta'];
   /**
    * @private
    */
@@ -26,10 +25,10 @@ export class ListItem extends LitElement {
   protected render() {
     return html`
       <div>
-        <a href=${`${window.location}page/${this.page.meta.id}`}><h2>${this.page.meta.title}</h2></a>
-        created: <code>${this.page.meta.createTime}</code>
-        <pre>${this.page.meta.id}</pre>
-        <p>${this.page.meta.tags.map((tag: string) => `[${tag}] `)}</p>
+        <a href=${`${window.location}page/${this.page.id}`}><h2>${this.page.title}</h2></a>
+        created: <code>${this.page.createTime}</code>
+        <pre>${this.page.id}</pre>
+        <p>${this.page.tags.map((tag: string) => `[${tag}] `)}</p>
       </div>
     `;
   }

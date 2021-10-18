@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import type { Model } from 'nb-client/interface';
+import { Model } from 'nb-client/model';
 
 import './PageListItem';
 
@@ -20,12 +20,12 @@ export class PageList extends LitElement {
   `]
 
   render() {
-    const { pageList } = this.model;
-    if (pageList !== null) {
-      return html`${pageList.map((page) => html`
+    const { pageMetaList } = this.model;
+    if (pageMetaList !== null && pageMetaList.length > 0) {
+      return html`${pageMetaList.map((page) => html`
         <nb-page-list-item .page=${page}></nb-page-list-item>
       `)}`;
     }
-    return html`error`;
+    return html`failed to load page list`;
   }
 }

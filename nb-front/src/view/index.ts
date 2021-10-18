@@ -1,5 +1,5 @@
 import { html, render } from 'lit';
-import { Model } from 'nb-client/interface';
+import { Model } from 'nb-client/model';
 
 import './components/PageList';
 import './App';

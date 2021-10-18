@@ -10,7 +10,6 @@ const getPageList = async (): Promise<PageModel['meta'][] | null> => {
       },
     });
     const json = await response.json();
-    console.log(json);
     return json.map((page: any) => {
       const result: PageModel['meta'] = {
         id: page.id,
@@ -23,7 +22,6 @@ const getPageList = async (): Promise<PageModel['meta'][] | null> => {
           (tag: { name: string, id: string, color: string }) => tag.name,
         ),
       };
-      console.log(result);
       return result;
     });
   } catch (error: any) {

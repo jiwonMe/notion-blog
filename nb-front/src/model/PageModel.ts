@@ -15,11 +15,11 @@ export class PageModel {
       lastEditedTime: string,
       author: string,
       tags: string[],
-    };
+    },
     data: {
       results: BlockModel[],
     };
-  }
+  };
 
   constructor(api: API, id: string) {
     this.id = id;

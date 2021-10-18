@@ -10,8 +10,8 @@ import { View } from './view';
 const main = async () => {
   const model = new Model(api);
   await model.init();
+  console.log(model);
   const view = new View(model);
-  console.log(view);
 };
 
 main();

@@ -23,7 +23,7 @@ export class Page extends LitElement {
       return html`no page`;
     }
     return html`
-      <h1>${this.page.meta.title}</h1>
+      <h1>${this.page.data.results}</h1>
       <p>created at ${this.page.meta.createTime}</p>
     `;
   }

@@ -12,6 +12,8 @@ export class Model {
 
   public pageList: PageModel[] = [];
 
+  public pageMetaList: PageModel['meta'][] = [];
+
   constructor(api: API) {
     this.api = api;
     /** singleton */
@@ -22,14 +24,12 @@ export class Model {
 
   async init() {
     const pageMetaList = await this.api.getPageList() ?? [];
-    await pageMetaList.forEach(
-      async (meta) => {
-        const page = await this.pageModelContainer.get(meta.id);
-        console.log(page.data);
-        this.pageList = [...this.pageList, page];
-      },
+    this.pageMetaList = pageMetaList;
+    const promisePageList = pageMetaList.map(
+      (meta) => this.pageModelContainer.get(meta.id),
     );
-    console.log(this.pageList);
+    this.pageList = await Promise.all(promisePageList);
+    console.log('pageList', this.pageList);
   }
 
   get database() {
