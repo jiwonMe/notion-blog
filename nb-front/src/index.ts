@@ -1,10 +1,18 @@
+/* eslint-disable class-methods-use-this */
 import 'regenerator-runtime/runtime';
 
-import getPageList from './api/getPageList';
+import { api } from './api';
+import { Model } from './model';
+import { View } from './view';
 
-export const main = async () => {
-  const pageList = await getPageList();
-  console.log(pageList);
+// import { test } from './model/test';
+
+const main = async () => {
+  const model = new Model(api);
+  await model.init();
+  const view = new View(model);
+  console.log(view);
 };
 
 main();
+// test();

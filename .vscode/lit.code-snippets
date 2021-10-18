@@ -1,0 +1,51 @@
+{
+	"lit component": {
+		"scope": "typescript",
+		"prefix": "wcl", // web component lit
+		"body": [
+			"import { LitElement, html, css } from 'lit';",
+			"import { customElement } from 'lit/decorators.js';",
+			"",
+			"@customElement('$1')",
+			"export class ${2:${TM_FILENAME_BASE}} extends LitElement {",
+			"  /**",
+			"   * @properties",
+			"   */",
+			"",
+			"  /**",
+			"   * @private",
+			"   */",
+			"",
+			"  static styles = [css`",
+			"    $4",
+			"  `]",
+			"",
+			"  protected render() {",
+			"    return html`",
+			"      $3",
+			"    `;",
+			"  }",
+			"}"
+		],
+		"description": "create lit element"
+	},
+	"snippetName": {
+		"scope": "typescript",
+		"prefix": "sbl",
+		"body": [
+			"import { html } from 'lit';",
+			"",
+			"import './${TM_FILENAME_BASE/(\\.[A-Za-z0-9]*)//gi}';",
+			"",
+			"export default {",
+			"  title: 'components/${TM_FILENAME_BASE/(\\.[A-Za-z0-9]*)//gi}',",
+			"  component: '$1',",
+			"  args: {},",
+			"};",
+			"",
+			"export const ${TM_FILENAME_BASE/(\\.[A-Za-z0-9]*)//gi} = () => html`<$1></$1>`;",
+			"",
+		],
+		"description": "create storybook"
+	}
+}

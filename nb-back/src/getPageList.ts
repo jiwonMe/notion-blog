@@ -7,6 +7,12 @@ export const getPageList = async ({ notion, databaseId }: { notion: Client, data
       property: 'publish',
       checkbox: { equals: true },
     },
+    sorts: [
+      {
+        property: 'created',
+        direction: 'descending',
+      },
+    ],
   });
 
   return response.results.map(

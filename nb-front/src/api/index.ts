@@ -1,11 +1,9 @@
+import getPageContent from './getPageContent';
 import getPageList from './getPageList';
+import getDatabase from './getDatabase';
 
-const api = async () => {
-  const elem = document.getElementById('root');
-  if (elem) {
-    const pageList = await getPageList();
-    elem.innerHTML = JSON.stringify(pageList) ?? '';
-  }
+export const api = {
+  getPageContent,
+  getPageList,
+  getDatabase,
 };
-
-export default api;

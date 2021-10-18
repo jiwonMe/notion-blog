@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from 'express';
 import express from 'express';
 import cors from 'cors';
 
-import { getPageList, getPageContent } from '../src';
+import { getPageList, getPageContent, getDatabase } from '../src';
 
 const server = express();
 
@@ -18,6 +18,6 @@ server.listen(port, () => {
   console.log(`[server] server started listening on http://localhost:${port}`);
 });
 
+server.get('/api/v1/getDatabase', wrapAsync(getDatabase));
 server.get('/api/v1/getPageList', wrapAsync(getPageList));
-
 server.get('/api/v1/getPageContent/:pageId', wrapAsync(getPageContent));
